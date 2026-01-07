@@ -5,7 +5,7 @@
 
     <groupId>io.github.auhyuan</groupId>
     <artifactId>netty-websocket-spring-boot-starter</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2-beta</version>
     <name>netty-websocket-spring-boot-starter</name>
     <description>netty-websocket-spring-boot-starter</description>
     <url>https://github.com/auhyuan/netty-websocket-spring-boot-starter</url>
@@ -29,8 +29,7 @@
     <scm>
         <url>https://github.com/auhyuan/netty-websocket-spring-boot-starter</url>
         <connection>scm:git:git://github.com/auhyuan/netty-websocket-spring-boot-starter.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/auhyuan/netty-websocket-spring-boot-starter.git
-        </developerConnection>
+        <developerConnection>scm:git:ssh://git@github.com:Auhyuan/netty-websocket-spring-boot-starter.git</developerConnection>
     </scm>
 
 

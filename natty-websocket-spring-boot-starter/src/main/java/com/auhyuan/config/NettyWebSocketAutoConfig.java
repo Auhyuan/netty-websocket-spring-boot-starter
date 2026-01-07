@@ -63,18 +63,18 @@ public class NettyWebSocketAutoConfig {
             int port = nettyWebSocketServer.port();
             log.info("Netty server path: {}", path);
             log.info("Netty server port: {}", port);
-            start(port,path, (WebSocketHandler) bean);
+            start(port,path, targetClass);
         });
 
     }
 
-    void start(int port, String path,WebSocketHandler webSocketHandler) {
+    void start(int port, String path,Class<?> handler) {
 
         executor.submit(() -> {
             try {
                 ChannelFuture channelFuture = new ServerBootstrap().group(bossGroup, workerGroup)
                         .channel(NioServerSocketChannel.class)
-                        .childHandler(new WebSocketPipeline(path,webSocketHandler))
+                        .childHandler(new WebSocketPipeline(path,handler))
                         .bind("0.0.0.0", port)
                         .sync();
 

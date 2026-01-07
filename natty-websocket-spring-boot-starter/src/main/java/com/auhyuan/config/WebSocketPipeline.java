@@ -17,11 +17,11 @@ public class WebSocketPipeline extends ChannelInitializer<SocketChannel> {
     private static final Integer MAX_CONTENT_LENGTH = 1024 * 8;
 
     private final String path;
-    private final WebSocketHandler webSocketHandler;
+    private final Class<?> handler;
 
-    public WebSocketPipeline(String path,WebSocketHandler webSocketHandler) {
+    public WebSocketPipeline(String path,Class<?> handler) {
         this.path = path;
-        this.webSocketHandler = webSocketHandler;
+        this.handler = handler;
     }
 
     @Override
@@ -42,7 +42,7 @@ public class WebSocketPipeline extends ChannelInitializer<SocketChannel> {
         //转义为Websocket protocol
         pipeline.addLast(new WebSocketServerProtocolHandler(path));
 
-        pipeline.addLast(webSocketHandler);
+        pipeline.addLast((WebSocketHandler) handler.getDeclaredConstructor().newInstance());
 
     }
 }
